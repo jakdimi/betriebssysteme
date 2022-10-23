@@ -15,13 +15,15 @@
  * Speicher.
  */
 char* leaking_function(char* first, char* last) {
+  printf("first: %p, last: %p\n", first, last);
   char *allocated = NULL;
-  char *ptr = first;
+  char* ptr = first;
   if(ptr) {
     while(ptr != last) {
+      printf("%d\n", *ptr);
       if(*ptr) {
         allocated = (char*) monitoring_alloc_malloc(
-            (*ptr)*sizeof(char) );
+            (*ptr) *sizeof(char) );
       } 
       ++ptr;
     }

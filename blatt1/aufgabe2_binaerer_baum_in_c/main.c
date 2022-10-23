@@ -5,11 +5,16 @@
 int main(void) {
   node_t* root = createTree(16);
 
+  printf("%d\n", (*root).value);
+
   insert(root,  8);
   insert(root,  4);
   insert(root, 15);
   insert(root, 42);
   insert(root, 23);
+
+  printf("%d\n", (*root).left->value);
+  printf("%d\n", (*root).left->left->value);
 
   if (binarySearch(root, 11)) {
     printf("11 found in tree\n");
@@ -22,7 +27,7 @@ int main(void) {
   }
   
   cleanUpTree(root);
-
+  
   return 0;
 }
 

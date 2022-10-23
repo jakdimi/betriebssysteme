@@ -21,7 +21,7 @@
 int main(void) {
   int error;
   // Ungültige Zeiger sollten immer auf NULL gesetzt werden.
-  char *answer    = NULL;
+  //char *answer    = NULL;
   char *foo       = NULL;
   char *bar       = NULL;
   char *allocated = NULL;
@@ -62,6 +62,7 @@ int main(void) {
       bar = NULL;
   }
 
+/*
   allocated = leaking_function(foo, foo+23);
   if(allocated) { 
       monitoring_alloc_free(allocated);
@@ -77,7 +78,7 @@ int main(void) {
   if(answer) { 
       monitoring_alloc_free(answer);
       answer = NULL;
-  }
+  } */
 
   // Nach Beendigung des eigentlichen Programms wird die shutdown Funktion der
   // Bibliothek aufgerufen. Diese räumt die Datenstrukturen der Bibliothek auf
