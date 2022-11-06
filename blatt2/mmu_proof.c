@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 		printf("Now run \"%s <ADDR>\" in a seperate terminal within 60 sec.\n",
 		       argv[0]);
 		puts("Sleeping 60 seconds...");
-		sleep(60);
+		sleep(20);
 		printf("Value at %p (stack) is %i\n", (void *)stack, *stack);
 		printf("Value at %p (heap) is %i\n", (void *)heap, *heap);
 	}

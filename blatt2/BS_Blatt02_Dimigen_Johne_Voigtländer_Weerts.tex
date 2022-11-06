@@ -1,0 +1,121 @@
+\documentclass[12pt,a4paper,oneside,ngerman]{article}
+
+\usepackage[left=3cm,right=2.5cm,top=2.5cm]{geometry} % Groesse der Seitenraender definieren
+\usepackage[utf8]{inputenc}
+%\usepackage [latin1]{inputenc}
+\usepackage{listings}
+\lstset{breaklines=true, basicstyle=\ttfamily}
+\usepackage[official]{eurosym}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{svg-extract}
+
+\newcommand{\secon}{\operatorname{second}}
+\newcommand{\sq}{\operatorname{sqr}}
+\newcommand{\head}{\operatorname{head}}
+\newcommand{\ones}{\operatorname{ones}}
+\newcommand{\oness}{\operatorname{ones}}
+\newcommand{\map}{\operatorname{map}}
+\newcommand{\inc}{\operatorname{inc}}
+
+
+\title{Betriebssysteme - Blatt 11}
+\author{Steffen Weerts}
+\date{Oktober 2022}
+
+
+% Titel in Kopfzeilen
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{20pt}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+%Variablen
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+\newcommand{\fach}{Betriebssysteme}
+\newcommand{\dokumentenTitel}{Abgabe Blatt 1}
+\newcommand{\tutor}{Anton Prediger}
+\newcommand{\memberOne}{Jakob Dimigen}
+\newcommand{\memberTwo}{Sanne Johne}
+\newcommand{\memberThree}{Felix Voigtl\"ander}
+\newcommand{\memberFour}{Steffen Weerts}
+%\newcommand{\group} {Gruppe D}
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+% Kopfzeile auf jeder Seite:
+\fancyhead[R]{\dokumentenTitel} % Dokument-Titel
+\fancyhead[L]{\memberOne, \memberTwo, \memberThree, \memberFour} % Autorennamen
+
+
+\begin{document}\thispagestyle{plain}
+
+\begin{multicols}{2} % Beginnt zweispaltigen Text fuer Header auf erster Seite
+		\hspace{-1cm} % Linken Header-Teil 1cm nach links schieben.
+		% Tabelle fuer linke Seite vom Header der ersten Seite
+		\begin{tabular}{ll} % Mit l werden die Eintraege linksbuendig
+			%Gruppe: & \group \\ 
+			Autoren: & \memberOne \\ % Zwischen jeder Spalte ein & einfuegen
+			& \memberTwo \\
+			& \memberThree  \\
+			& \memberFour \\ % beendet eine Tabellenzeile 
+			 
+		\end{tabular}
+		
+		\columnbreak % Nun beginnt die rechte Seite des Headers
+		\hspace{-1cm} % Rechten Header-Teil 1cm nach links schieben.
+		% Tabelle fuer rechte Seite vom Header der ersten Seite
+		\raggedleft \begin{tabular}{ll} % p{1cm} bewirkt, dass die rechte Spalte 6cm breit ist.
+			Punkte: &  
+			%Mit diesem Befehl wird die Zeilenhoehe der folgenden Tabelle um 20% erhoeht.   
+			\renewcommand{\arraystretch}{1.2} 
+			% Nun kommt eine innere Tabelle in der aeusseren Tabelle, mit der eine Punktetabelle fuer den Tutor erstellt wird:  
+			\begin{tabular}{|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|}
+				\hline A3 & A4 & A5 & $\sum\limits^{ }$ \\ \hline
+				& & & \\ \hline    
+			\end{tabular} \\ Tutor: &  \ \tutor \\
+		\end{tabular}
+		
+	\end{multicols} % Beendet zweispaltigen Text
+	
+	\begin{center}
+		\Large{\fach} \\
+		\LARGE{\dokumentenTitel} \\
+    \end{center}
+
+
+\section*{Aufgabe 3}
+\begin{enumerate}
+	\item[(a)] Das sind zwei unterschiedliche Speicheradressen, da die Pointer auf verschiedene Daten zeigen. Insbesondere liegt davon eine Adresse im Heap, die Andere im Stack.
+	
+	\item[(b)] Bei mehrfachem Ausführen des Programms ändern sich die Speicheradressen von Ausführung zu Ausführung, wobei die Adresse des Stacks immer auf "4" endet und die Adresse des Heaps immer auf "2a0".
+	
+	\item [(c)] Bei mehrfachem Ausführen des Programms bleiben die ausgegebenen Speicheradressen gleich
+	
+	\item[(d)] Laut der zweiten Ausführung des Programms ist an der übergebenen Speicheradresse der Wert "0" gespeichert, obwohl von der ersten Ausführung an diese Adresse der Wert "42" geschrieben wurde.
+\end{enumerate}
+
+\section*{Aufgabe 4}
+\begin{center}
+	\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| }
+		\hline
+		Adresse: & & 31 & 32 & 33 & 11 & 12 & 13 & 21 & 22 & 14 & 34 & 41 & 42 & 23 & 35 & 36 & 43 \\
+		\hline
+		P1: & N & R & R & A & A & A & B & R & A & N & N & N & N & N & N & N & N \\  
+		P2: & N & N & N & N & R & R & A & A & B & B & B & R & A & N & N & N & N \\
+		P3: & A & A & A & B & B & B & B & R & R & A & B & R & R & A & A & N & N \\
+		P4: & N & N & R & R & R & R & R & R & R & R & A & A & B & B & R & A & N \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\section*{Aufgabe 5}
+\begin{enumerate}
+	\item[(a)] $A<B$
+	\item[(b)] $\neg A\wedge\neg B$.
+	\item[(c)] $A<B \vee B<A$.
+	\item[(d)] $A<B \vee B<A$.
+	\item[(e)] $A<C \vee B<C$.
+	\item[(f)] $A<B \vee B<A$.
+\end{enumerate}
+
+\end{document}
