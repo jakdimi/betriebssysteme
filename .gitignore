@@ -4,3 +4,4 @@
 *.log
 *.pdf
 *.synctex.gz
+!blatt[01][0-9].pdf
