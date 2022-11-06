@@ -1,0 +1,107 @@
+\documentclass[12pt,a4paper,oneside,ngerman]{article}
+
+\usepackage[left=3cm,right=2.5cm,top=2.5cm]{geometry} % Groesse der Seitenraender definieren
+%\usepackage[utf8]{inputenc}
+\usepackage [latin1]{inputenc}
+\usepackage{listings}
+\lstset{breaklines=true, basicstyle=\ttfamily}
+\usepackage[official]{eurosym}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{svg-extract}
+
+\newcommand{\secon}{\operatorname{second}}
+\newcommand{\sq}{\operatorname{sqr}}
+\newcommand{\head}{\operatorname{head}}
+\newcommand{\ones}{\operatorname{ones}}
+\newcommand{\oness}{\operatorname{ones}}
+\newcommand{\map}{\operatorname{map}}
+\newcommand{\inc}{\operatorname{inc}}
+
+
+\title{Betriebssysteme - Blatt 11}
+\author{Steffen Weerts}
+\date{Oktober 2022}
+
+
+% Titel in Kopfzeilen
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{20pt}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+%Variablen
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+\newcommand{\fach}{Betriebssysteme}
+\newcommand{\dokumentenTitel}{Abgabe Blatt 1}
+\newcommand{\tutor}{Anton Prediger}
+\newcommand{\memberOne}{Jakob Dimigen}
+\newcommand{\memberTwo}{Sanne Johne}
+\newcommand{\memberThree}{Felix Voigtl\"ander}
+\newcommand{\memberFour}{Steffen Weerts}
+%\newcommand{\group} {Gruppe D}
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+% Kopfzeile auf jeder Seite:
+\fancyhead[R]{\dokumentenTitel} % Dokument-Titel
+\fancyhead[L]{\memberOne, \memberTwo, \memberThree, \memberFour} % Autorennamen
+
+
+\begin{document}\thispagestyle{plain}
+
+\begin{multicols}{2} % Beginnt zweispaltigen Text fuer Header auf erster Seite
+		\hspace{-1cm} % Linken Header-Teil 1cm nach links schieben.
+		% Tabelle fuer linke Seite vom Header der ersten Seite
+		\begin{tabular}{ll} % Mit l werden die Eintraege linksbuendig
+			%Gruppe: & \group \\ 
+			Autoren: & \memberOne \\ % Zwischen jeder Spalte ein & einfuegen
+			& \memberTwo \\
+			& \memberThree  \\
+			& \memberFour \\ % beendet eine Tabellenzeile 
+			 
+		\end{tabular}
+		
+		\columnbreak % Nun beginnt die rechte Seite des Headers
+		\hspace{-1cm} % Rechten Header-Teil 1cm nach links schieben.
+		% Tabelle fuer rechte Seite vom Header der ersten Seite
+		\raggedleft \begin{tabular}{ll} % p{1cm} bewirkt, dass die rechte Spalte 6cm breit ist.
+			Punkte: &  
+			%Mit diesem Befehl wird die Zeilenhoehe der folgenden Tabelle um 20% erhoeht.   
+			\renewcommand{\arraystretch}{1.2} 
+			% Nun kommt eine innere Tabelle in der aeusseren Tabelle, mit der eine Punktetabelle fuer den Tutor erstellt wird:  
+			\begin{tabular}{|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|}
+				\hline A1 & A2 & $\sum\limits^{ }$ \\ \hline
+				& & \\ \hline    
+			\end{tabular} \\ Tutor: &  \ \tutor \\
+		\end{tabular}
+		
+	\end{multicols} % Beendet zweispaltigen Text
+	
+	\begin{center}
+		\Large{\fach} \\
+		\LARGE{\dokumentenTitel} \\
+    \end{center}
+
+
+\section*{Aufgabe 1}
+\begin{enumerate}
+	\item[(a)]
+	\lstinputlisting[language=C]{aufgabe1_dynamische_speicherverwaltung_in_c/monitoring_alloc.c}
+	
+	\item[(b)]
+	Das Beispielprogramm erstellt in der \textit{leaking\_function} Speicherbl\"ocke und gibt lediglich den letzten Spiecherblock zur\"uck, der dann freigegeben wird.
+	Alle vorherigen Speicherbl\"ocke bleiben erhalten und auf diese kann nicht mehr zugegriffen werden.
+\end{enumerate}
+
+\section*{Aufgabe 2}
+\begin{enumerate}
+	\item[tree.c]
+	\lstinputlisting[language=C]{aufgabe2_binaerer_baum_in_c/tree.c}
+	
+	\item[main.c]
+	\lstinputlisting[language=C]{aufgabe2_binaerer_baum_in_c/main.c}
+\end{enumerate}
+
+
+
+\end{document}
