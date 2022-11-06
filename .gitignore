@@ -5,3 +5,4 @@
 *.pdf
 *.synctex.gz
 !blatt[01][0-9].pdf
+!blatt[0-9].pdf
