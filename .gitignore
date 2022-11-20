@@ -4,5 +4,6 @@
 *.log
 *.pdf
 *.synctex.gz
+*.zip
 !blatt[01][0-9].pdf
 !blatt[0-9].pdf
