@@ -131,9 +131,14 @@ handle_process_ended(struct process *p)
 static void
 process_wrapper(void)
 {
+	disable_interrupts();
+
 	struct process *p = ptable.running;
 	p->exit_code = p->process();
 	p->state = STATE_DEAD;
+	
+	enable_interrupts();
+
 	if (setcontext(&ptable.scheduler_context) == -1){
 		perror("Failed to return to core scheduler");
 		exit(EXIT_FAILURE);

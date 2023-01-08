@@ -9,22 +9,27 @@
 int
 create_process(const char *name, int func(void), void *arg)
 {
+	disable_interrupts();
+
 	size_t name_len;
 	struct process *result;
 	
 	if (!name || !func){
 		errno = EINVAL;
+		enable_interrupts();
 		return -1;
 	}
 	
 	name_len = strnlen(name, sizeof(result->name));
 	if (name_len >= sizeof(result->name)){
 		errno = EOVERFLOW;
+		enable_interrupts();
 		return -1;
 	}
 	
 	if (!(result = malloc(sizeof(struct process)))){
 		errno = ENOMEM;
+		enable_interrupts();
 		return -1;
 	}
 	
@@ -45,12 +50,14 @@ create_process(const char *name, int func(void), void *arg)
 	if (getcontext(&result->context) == -1){
 		perror("Failed to create context for new process");
 		free(result);
+		enable_interrupts();
 		return -1;
 	}
 	
 	if ((result->context.uc_stack.ss_sp = malloc(STACK_SIZE)) == NULL){
 		perror("Failed to create stack for the new process");
 		free(result);
+		enable_interrupts();
 		return -1;
 	}
 	result->context.uc_stack.ss_size = STACK_SIZE;
@@ -60,6 +67,7 @@ create_process(const char *name, int func(void), void *arg)
 		perror("Failed to apped new process to run queue");
 		free(result->context.uc_stack.ss_sp);
 		free(result);
+		enable_interrupts();
 		return -1;
 	}
 	
@@ -72,5 +80,6 @@ create_process(const char *name, int func(void), void *arg)
 		       result->name, result->process_id);
 	}
 	
+	enable_interrupts();
 	return result->process_id;
 }

@@ -30,7 +30,7 @@ int enable_interrupts() {
 		return -1;
 	}
 	if (sigprocmask(SIG_UNBLOCK, &sigset, NULL) != 0) {
-		perror("Could not block SIGPROF.");
+		perror("Could not unblock SIGPROF.");
 		return -1;
 	}
 	return 0;

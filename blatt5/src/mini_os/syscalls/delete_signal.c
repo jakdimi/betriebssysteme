@@ -6,8 +6,11 @@
 int
 delete_signal(struct signal *s)
 {
+	disable_interrupts();
+
 	if (!s){
 		errno = EINVAL;
+		enable_interrupts();
 		return -1;
 	}
 	
@@ -15,9 +18,11 @@ delete_signal(struct signal *s)
 		fprintf(stderr, "Signal to delete still in use by \"%s\" (PID %i)!\n",
 		        s->waiting_process->name, s->waiting_process->process_id);
 		errno = EBUSY;
+		enable_interrupts();
 		return -1;
 	}
 	
 	free(s);
+	enable_interrupts();
 	return 0;
 }

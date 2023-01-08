@@ -6,9 +6,12 @@
 int
 msg(const char *s, ...)
 {
+	disable_interrupts();
+
 	va_list ap;
 	if (!s){
 		errno = EINVAL;
+		enable_interrupts();
 		return -1;
 	}
 	
@@ -18,5 +21,6 @@ msg(const char *s, ...)
 	vprintf(s, ap);
 	va_end(ap);
 	puts("");
+	enable_interrupts();
 	return 0;
 }

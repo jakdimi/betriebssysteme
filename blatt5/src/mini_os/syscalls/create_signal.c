@@ -5,6 +5,7 @@
 struct signal *
 create_signal(void)
 {
+	disable_interrupts();
 	struct signal *result = malloc(sizeof(struct signal));
 	
 	if (result){
@@ -14,5 +15,6 @@ create_signal(void)
 		errno = ENOMEM;
 	}
 	
+	enable_interrupts();
 	return result;
 }

@@ -43,10 +43,14 @@ free_child_zombies(struct process *p)
 void
 delete_process(struct process *p)
 {
+	disable_interrupts();
+
 	assert(p != NULL);
 	update_created_by(&ptable.run_queue, p);
 	update_created_by(&ptable.wait_queue, p);
 	
 	free_child_zombies(p);
 	free_memory(p);
+
+	enable_interrupts();
 }

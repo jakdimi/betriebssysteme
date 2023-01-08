@@ -6,8 +6,11 @@
 int
 snotify(struct signal *s)
 {
+	disable_interrupts();
+
 	if (!s){
 		errno = EINVAL;
+		enable_interrupts();
 		return -1;
 	}
 	
@@ -28,6 +31,7 @@ snotify(struct signal *s)
 		s->value = 1;
 	}
 	
+	enable_interrupts();
 	return 0;
 }
  

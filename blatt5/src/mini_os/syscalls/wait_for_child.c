@@ -6,6 +6,8 @@
 int
 wait_for_child(int pid, int *exit_code)
 {
+	disable_interrupts();
+
 	struct process *p;
 	if ((p = queue_search_id(&ptable.run_queue, pid)) == NULL){
 		if ((p = queue_search_id(&ptable.wait_queue, pid)) == NULL)
@@ -15,6 +17,7 @@ wait_for_child(int pid, int *exit_code)
 	if ((p == NULL) || (p->created_by != ptable.running)){
 		// Procces does not exist or it's not my child
 		errno = EINVAL;
+		enable_interrupts();
 		return -1;
 	}
 	
@@ -30,5 +33,6 @@ wait_for_child(int pid, int *exit_code)
 	if (exit_code)
 		*exit_code = p->exit_code;
 	
+	enable_interrupts();
 	return 0;
 }
