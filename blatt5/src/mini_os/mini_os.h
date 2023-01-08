@@ -2,6 +2,8 @@
 #define MINI_OS_H
 #include <ucontext.h>
 #include <stddef.h>
+#include <sys/time.h>
+#include <signal.h>
 #include "constants.h"
 #include "structs.h"
 #include "globals.h"
