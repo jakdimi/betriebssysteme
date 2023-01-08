@@ -1,3 +1,4 @@
+#include <stdio.io>
 #include <signal.h>
 #include "mini_os.h"
 
