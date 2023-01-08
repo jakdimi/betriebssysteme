@@ -7,6 +7,7 @@ AR := ar
 
 all: folder mini_os
 
+MINI_OS_OBJS += obj/mini_os/interrupts.o
 MINI_OS_OBJS += obj/mini_os/delete_process.o
 MINI_OS_OBJS += obj/mini_os/mini_os.o
 MINI_OS_OBJS += obj/mini_os/ptable.o
@@ -55,6 +56,10 @@ mini_os: $(MINI_OS_OBJS) $(USERSPACE_OBJS)
 	$(CC) $(LDFLAGS) -o $@ $^
 
 obj/mini_os/mini_os.o: src/mini_os/mini_os.c $(MINI_OS_COMMON_HEADER)
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+obj/mini_os/interrupts.o: \
+		src/mini_os/interrupts.c $(MINI_OS_COMMON_HEADER)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 obj/mini_os/delete_process.o: \
