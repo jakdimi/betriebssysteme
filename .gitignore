@@ -9,3 +9,4 @@
 !blatt[0-9].pdf
 /sonstiges/
 .vscode/
+obj/
