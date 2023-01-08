@@ -9,6 +9,8 @@
 #include "scheduler/scheduler.h"
 #include "syscalls/syscalls.h"
 
+int disable_interrupts();
+int enable_interrupts();
 void delete_process(struct process *);
 int init(void);
 #endif
