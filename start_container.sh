@@ -4,7 +4,6 @@ echo "Deleting container if it exists:"
 docker ps -a | grep betriebssysteme && docker contianer rm betriebssysteme
 echo "Deleting image if it exists:"
 docker image ls | grep betriebssysteme && docker image rm betriebssysteme
-echo "Argument: $1"
 docker build -t "betriebssysteme" --build-arg blatt=$1 .
 docker run --name "betriebssysteme" -d betriebssysteme
 sleep 2
