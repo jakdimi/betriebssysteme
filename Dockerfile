@@ -2,8 +2,8 @@ FROM gcc:latest
 
 COPY . ./betriebssysteme
 
-WORKDIR /betriebssysteme/
-
-RUN cd /betriebssysteme/
+ARG blatt=""
+WORKDIR /betriebssysteme/$blatt
+RUN cd /betriebssysteme/$blatt
 
 CMD ["tail", "-f", "/dev/null"]
