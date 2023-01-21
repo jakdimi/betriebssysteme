@@ -6,7 +6,7 @@ CFLAGS := -Wall -Wextra -pedantic -Werror -std=c99 -fPIC
 CFLAGS += -O0 -g
 
 REDUCE_OBJS := obj/loader.o obj/load_op.o obj/reduce.o obj/unload_op.o
-LIBS := lib/add.so lib/max.so lib/min.so lib/mul.so
+LIBS := lib/add.so lib/max.so lib/min.so lib/mul.so lib/concat.so
 
 all: folder reduce $(LIBS)
 

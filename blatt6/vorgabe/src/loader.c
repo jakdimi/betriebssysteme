@@ -12,12 +12,16 @@ main(int argc, char **argv)
 {
 	struct dynop op;
 	int result = 0;
-	
+
 	if (argc != 2){
 		puts("Usage: ./reduce <OP_LIB>");
 		return EXIT_FAILURE;
 	}
 	
+	load_op(&op, argv[1]);
+	reduce(&result, values, ARRAY_LENGTH(values), op.op);
+	unload_op(&op);
+
 	printf("Reduced \"%i", values[0]);
 	for (size_t i = 1; i < ARRAY_LENGTH(values); i++)
 		printf(", %i", values[i]);

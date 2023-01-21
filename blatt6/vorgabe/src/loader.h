@@ -6,6 +6,11 @@
 #define LOADER_H
 
 #include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <dlfcn.h>
+#include <string.h>
+#include <errno.h>
 
 /*
  * \brief Struct for an operation that can be loaded dynamically
