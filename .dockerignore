@@ -1,3 +1,7 @@
 Dockerfile
 start_container.sh
 readme.md
+README.md
+./**/*.pdf
+.dockerignore
+./**/*.zip
